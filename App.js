@@ -1,37 +1,28 @@
 import { NavigationContainer } from '@react-navigation/native';
-import Slider from '@react-native-community/slider';
-import { StatusBar } from 'expo-status-bar';
-import { Button, StyleSheet, Text, TextInput, View } from 'react-native';
+import { StyleSheet, Text, View } from 'react-native';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import ReviewFormScreen from './src/screens/ReviewFormScreen';
+import HomeScreen from './src/screens/HomeScreen';
 
+const Tab = createBottomTabNavigator()
+
+function SettingsScreen() {
+  return (
+    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+      <Text>Settings!</Text>
+    </View>
+  );
+}
 
 export default function App() {
   return (
     <NavigationContainer>
-      <View style={styles.container}>
-        <Text>How would you rate your partner's behavior today?</Text>
-        <Slider
-          style={{width: 200, height: 40}}
-          minimumValue={0}
-          maximumValue={100}
-          step={20}
-        />
-        <Image
-          source={require('./smile-icon.png')}
-          />
-        <Text>What did your partner do right or wrong?</Text>
-        <TextInput
-          placeholder='hi there!'
-          style={{
-            height: 80,
-            width: 250,
-            margin: 10,
-            borderWidth: '1',
-            borderColor: 'gray',
-          }}
-        />
-        <Button title='Submit'></Button>
-        <StatusBar style="auto" />
-      </View>
+      <Tab.Navigator>
+        <Tab.Screen name="Home" component={HomeScreen} />
+        <Tab.Screen name="Rate" component={ReviewFormScreen} />
+        <Tab.Screen name="History" component={SettingsScreen} />
+        <Tab.Screen name="Profile" component={SettingsScreen} />
+      </Tab.Navigator>
     </NavigationContainer>
   );
 }
