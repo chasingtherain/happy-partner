@@ -3,6 +3,7 @@ import { StyleSheet, Text, View } from 'react-native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import ReviewFormScreen from './src/screens/ReviewFormScreen';
 import HomeScreen from './src/screens/HomeScreen';
+import SettingScreen from './src/screens/SettingScreen';
 
 const Tab = createBottomTabNavigator()
 
@@ -21,7 +22,7 @@ export default function App() {
         <Tab.Screen name="Home" component={HomeScreen} />
         <Tab.Screen name="Rate" component={ReviewFormScreen} />
         <Tab.Screen name="History" component={SettingsScreen} />
-        <Tab.Screen name="Profile" component={SettingsScreen} />
+        <Tab.Screen name="Profile" component={SettingScreen} />
       </Tab.Navigator>
     </NavigationContainer>
   );
