@@ -24,11 +24,15 @@ function SettingScreen({navigation}) {
           id: 5,
           name: 'Feedback',
         },
+        {
+          id: 6,
+          name: 'Log Out',
+        },
     ];
 
     const SettingsItem = ({ name }) => (
-    <View style={styles.settingsContainer}>
-        <Text onPress={() => navigation.navigate('Rate')}>{name}</Text>
+    <View style={styles.settingsContainer} onTouchStart={() => navigation.navigate(name)}>
+        <Text>{name}</Text>
     </View>
     );
 

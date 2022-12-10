@@ -4,26 +4,31 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import ReviewFormScreen from './src/screens/ReviewFormScreen';
 import HomeScreen from './src/screens/HomeScreen';
 import SettingScreen from './src/screens/SettingScreen';
+import AboutScreen from './src/screens/settingsScreen/AboutScreen';
+import { createStackNavigator } from '@react-navigation/stack';
+
+const Stack = createStackNavigator();
 
 const Tab = createBottomTabNavigator()
 
-function SettingsScreen() {
+export function TabNavigator() {
   return (
-    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-      <Text>Settings!</Text>
-    </View>
-  );
+    <Tab.Navigator>
+      <Tab.Screen name="Home" component={HomeScreen} />
+      <Tab.Screen name="Rate" component={ReviewFormScreen} />
+      <Tab.Screen name="Settings" component={SettingScreen} />
+  </Tab.Navigator>
+   )
 }
+
 
 export default function App() {
   return (
     <NavigationContainer>
-      <Tab.Navigator>
-        <Tab.Screen name="Home" component={HomeScreen} />
-        <Tab.Screen name="Rate" component={ReviewFormScreen} />
-        <Tab.Screen name="History" component={SettingsScreen} />
-        <Tab.Screen name="Profile" component={SettingScreen} />
-      </Tab.Navigator>
+      <Stack.Navigator>
+        <Stack.Screen name="Home" component={TabNavigator} options={{ headerShown: false }}/>
+        <Stack.Screen name="About" component={AboutScreen} />
+      </Stack.Navigator>
     </NavigationContainer>
   );
 }
